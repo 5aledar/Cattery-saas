@@ -1,5 +1,5 @@
 const Cat = require('../models/catModel')
-
+const Supply = require('../models/supplyModel')
 const addNewCat = async (req, res) => {
     try {
         const { catName, catAge, catWeight, catImage } = req.body
@@ -59,7 +59,7 @@ const deleteCat = async (req, res) => {
             return res.json("catId is missing");
         }
         const cat = await Cat.findById({ _id: catId })
-        if(!cat){
+        if (!cat) {
             return res.status(404).json("couldnt finnd cat")
         }
         const result = await Cat.deleteOne({ _id: catId });
@@ -75,4 +75,37 @@ const deleteCat = async (req, res) => {
 };
 
 
-module.exports = { addNewCat, editCat, deleteCat }
+const getDailyConsumption = async (req, res) => {
+    const cats = await Cat.find()
+    let rate = 0
+    for (let i = 0; i < cats.length; i++) {
+
+        if (cats[i].catAge < 1) {
+            rate += 0.05
+        } else if (cats[i].catAge > 1 && cats[i].catAge < 7) {
+
+            rate += 0.12
+        } else if (cats[i].catAge > 8) {
+            rate += 0.09
+        }
+        console.log(rate);
+    }
+    res.json({ dailyConsumption: rate })
+}
+const addCatSupplies = async (req, res) => {
+    try {
+
+        const { food, medicine, litter_and_hygiene } = req.body
+        const newSupply = new Supply({
+            food: food,
+            medicine: medicine,
+            litter_and_hygiene: litter_and_hygiene
+        })
+        await newSupply.save()
+        res.status(201).json("supplies added")
+    } catch (err) {
+        res.status(500).json(err)
+    }
+}
+
+module.exports = { addNewCat, editCat, deleteCat, getDailyConsumption, addCatSupplies }

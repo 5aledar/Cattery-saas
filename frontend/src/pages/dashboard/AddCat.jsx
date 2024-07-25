@@ -5,3 +5,4 @@ export const AddCat = () => {
     <div>AddCat</div>
   )
 }
+

@@ -7,7 +7,7 @@ app.use(cors())
 app.use(express.json())
 
 
-const port = process.env.PORT
+const port = process.env.PORT || 4000
 console.log(port);
 
 app.listen(port , () =>{

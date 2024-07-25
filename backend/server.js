@@ -12,7 +12,6 @@ app.use('/cat', catRoutes)
 app.use('/consumption', consumptionRoutes)
 const port = process.env.PORT || 4000
 console.log(port);
-
 app.listen(port, () => {
     connectToMongoDB()
     console.log(`server is running on port ${port}`);

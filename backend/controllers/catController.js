@@ -51,6 +51,15 @@ const editCat = async (req, res) => {
     }
 };
 
+const getAllCats = async (req, res) => {
+    try {
+        const cats = await Cat.find()
+        res.status(200).json(cats)
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
 const deleteCat = async (req, res) => {
     try {
         const { catId } = req.params;
@@ -92,4 +101,4 @@ const addCatSupplies = async (req, res) => {
     }
 }
 
-module.exports = { addNewCat, editCat, deleteCat, addCatSupplies }
+module.exports = { addNewCat, editCat, deleteCat, addCatSupplies, getAllCats }

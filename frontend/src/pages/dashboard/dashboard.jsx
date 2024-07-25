@@ -1,7 +1,10 @@
 import React from 'react'
-
-export const dashboard = () => {
+import {Nav} from '../../componants/Nav'
+export const Dashboard = () => {
   return (
+    <>
+    <Nav></Nav>
     <div>dashboard</div>
+    </>
   )
 }

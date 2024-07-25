@@ -1,10 +1,15 @@
 import Button from '@mui/material/Button';
+import { Navigate, Route, Routes } from "react-router-dom";
+import {Home} from './pages/Home'
+import {Dashboard} from './pages/dashboard/Dashboard'
+
 function App() {
   return (
     <>
-      <Button variant="text">Text</Button>
-      <Button variant="contained">Contained</Button>
-      <Button variant="outlined">Outlined</Button>
+    <Routes>
+      <Route path='/' element={<Home></Home>}></Route>
+      <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
+    </Routes>
     </>
   );
 }

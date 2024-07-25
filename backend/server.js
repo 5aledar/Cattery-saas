@@ -10,8 +10,8 @@ app.use(cors())
 app.use(express.json())
 app.use('/cat' , catRoutes)
 
-const port = process.env.PORT ||4000
-
+const port = process.env.PORT || 4000
+console.log(port);
 
 
 app.listen(port , () =>{

@@ -16,7 +16,7 @@ export function Nav() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
           </Typography>
-          <Button color="inherit" variant="outlined" size="large">
+          <Button color="inherit"  variant="outlined" size="large">
             <PiCatFill className="text-xl" />
             <FaPlus className="text-xl" />
           </Button>

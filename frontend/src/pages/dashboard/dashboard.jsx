@@ -7,11 +7,6 @@ export const Dashboard = () => {
     <>
       <Nav></Nav>
       <Table></Table>
-      <Link to='/'>
-      <button className="btn btn-outline w-full mt-2 text-lg btn-s">
-        Home
-      </button>
-      </Link>
     </>
   );
 };

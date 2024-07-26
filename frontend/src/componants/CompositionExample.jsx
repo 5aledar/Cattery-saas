@@ -35,8 +35,8 @@ function GaugePointer() {
   );
 }
 
-export default function CompositionExample() {
-  const value = 40;
+export default function CompositionExample({props}) {
+  const value = 80;
 
   const color = value < 50 ? "red" : value < 75 ? "orange" : "green";
 

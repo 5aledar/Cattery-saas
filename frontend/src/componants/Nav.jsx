@@ -10,6 +10,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { PiCatFill } from "react-icons/pi";
 import { FaPlus } from "react-icons/fa6";
 import { Link, useLocation } from "react-router-dom";
+import { Tooltip } from "@mui/material";
 import { AiOutlineMenu } from "react-icons/ai";
 
 export function Nav() {
@@ -30,7 +31,7 @@ export function Nav() {
       <AppBar position="fixed">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Admin
+             <div className="text-3xl">Admin</div>
           </Typography>
           <div className="hidden sm:flex w-1/3 gap-4 items-center">
             <Link to="/">

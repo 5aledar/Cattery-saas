@@ -31,7 +31,7 @@ export const Home = () => {
                 className="text-3xl font-extrabold sm:text-5xl"
               >
                 Let us find the best care
-                <strong className="block font-extrabold text-rose-700"> For your cats </strong>
+                <strong className="block font-extrabold text-blue-600"> For your cats </strong>
               </motion.h1>
               <motion.p
                 initial={{ y: 20, opacity: 0 }}
@@ -46,9 +46,9 @@ export const Home = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   href="#"
-                  className="block w-full rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
+                  className="block w-full rounded bg-blue-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
                 >
-                  Get Started
+                  show dashboard
                 </motion.a>
               </div>
             </div>

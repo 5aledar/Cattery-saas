@@ -4,7 +4,7 @@ import {
   GaugeValueArc,
   GaugeReferenceArc,
   useGaugeState,
-  gaugeClasses,
+  // gaugeClasses,
 } from "@mui/x-charts/Gauge";
 
 function GaugePointer() {

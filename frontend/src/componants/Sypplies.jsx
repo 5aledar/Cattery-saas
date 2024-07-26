@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React  , {useState , useEffect} from "react";
+import { motion } from "framer-motion";
 import Food2 from '../assets/food2.jpg';
+
 export const Sypplies = () => {
   const [food, setFood] = useState(0)
   const [foodDate, setFoodDate] = useState(0)
@@ -19,24 +21,28 @@ export const Sypplies = () => {
     getFood()
   }, [])
   return (
-    <div className="card bg-base-100 w-1/3  h-full shadow-xl">
+    <motion.div
+      className="card bg-base-100 w-[340px] h-[380px] shadow-xl mb-9"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+      whileHover={{ scale: 1.05 }}
+    >
       <figure className="px-10 pt-10">
-        <img
-          src={Food2}
-          alt="Food"
-        />
+        <img src={Food2} alt="Food" />
       </figure>
-      <div className="card-body ">
+      <div className="card-body">
         <h2 className="card-title">
-          Food!
-          <div className="badge badge-secondary">For your cats</div>
+          Supplies!
+          <div className="badge badge-secondary bg-blue-600 border-blue-600 p-3">For your cats</div>
         </h2>
-        <p>cattery food will be enough for {foodDate} days</p>
+        <p>Your food will be enough for one year</p>
         <div className="card-actions justify-end">
-          <div className="badge badge-outline">+{food} kg</div>
-          {/* <div className="badge badge-outline">+100 vaccinations</div> */}
+          <motion.div className="badge badge-outline">+100 kg</motion.div>
+         
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
+  

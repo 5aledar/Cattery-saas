@@ -35,23 +35,32 @@ function GaugePointer() {
   );
 }
 
-export default function CompositionExample({props}) {
-  const value = 80;
+export default function CompositionExample({ val }) {
+  const value = val;
+  let arrawValue = 0
+  if(value > 100){
+    arrawValue = 100
+  }else{
+    arrawValue = value
 
+  }
   const color = value < 50 ? "red" : value < 75 ? "orange" : "green";
 
   return (
-    <GaugeContainer
-      width={300}
-      height={200}
-      startAngle={-110}
-      endAngle={110}
-      value={value}
-    >
-      <GaugeReferenceArc />
-      <GaugeValueArc />
-      <GaugePointer />
-    </GaugeContainer>
+    <div className=" justify-around items-center m-auto">
+      <GaugeContainer
+        width={200}
+        height={200}
+        startAngle={-110}
+        endAngle={110}
+        value={arrawValue}
+        >
+        <GaugeReferenceArc />
+        <GaugeValueArc />
+        <GaugePointer />
+      </GaugeContainer>
+        <h1 className="ml-24 font-bold text-3xl">{value}</h1>
+    </div >
   );
 }
 

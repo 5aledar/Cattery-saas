@@ -46,7 +46,7 @@ export const Table = () => {
           {data.map((row) => (
             <tr className="text-center" key={row._id}>
               <th></th>
-              <td className="font-bold" value={catName}>{row.catName}</td>
+              <td className="font-bold">{row.catName}</td>
               <td>{row.catAge} years</td>
               <td>{row.catWeight}</td>
               <td>
@@ -77,7 +77,7 @@ export const Table = () => {
                 </button>
               </td>
               <td className="flex gap-2 ">
-                <Link to={`/edit/${catName}`}>
+                <Link to={`/edit/${row.catName}`}>
                   <button className="btn btn-outline btn-warning btn-s">
                     Edit <MdEdit />
                   </button>

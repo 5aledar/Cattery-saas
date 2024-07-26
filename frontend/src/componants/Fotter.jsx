@@ -2,15 +2,11 @@ import React from "react";
 import CatAnimation from '../assets/CatAnimation.gif'
 export const Fotter = () => {
   return (
-    <footer className="footer footer-center bg-primary text-primary-content p-10 mt-10 fixed bottom-0">
+    <footer className="footer footer-center bg-primary text-primary-content p-10 mt-10 static bottom-0">
       <aside>
         <img src={CatAnimation} alt="" />
-        <p className="font-bold">
-         Home of cat
-          <br />
-          Providing reliable tech since 2024
-        </p>
-        <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
+      
+        
       </aside>
       <nav>
         <div className="grid grid-flow-col gap-4">

@@ -66,8 +66,8 @@ export default function MyApp() {
                         </div>
                     </div>
                     <div className="py-12 xl:w-1/2 lg:w-1/3 sm:w-1/2">
-                        <img src="https://i.pinimg.com/236x/b8/61/40/b86140e7d6708c757a40b3905cfa0eb5.jpg" alt="image ow a woman studying" className="h-full rounded-md object-cover object-center md:block hidden max-w-full max-h-dvh" />
-                        <img src="https://i.ibb.co/NT0VJcd/pexels-la-miko-3681591-1.png" alt="image ow a woman studying" className="h-auto w-auto md:hidden block max-w-full max-h-96" />
+                        <img src="https://i.pinimg.com/236x/b8/61/40/b86140e7d6708c757a40b3905cfa0eb5.jpg" alt="image ow a woman studying" className="h-full rounded-md object-cover object-center md:block hidden max-w-full -translate-y-6 ... max-h-dvh" />
+                        <img src="https://i.ibb.co/NT0VJcd/pexels-la-miko-3681591-1.png" alt="image ow a woman studying" className="h-auto w-auto md:hidden block max-w-full -translate-y-6 ... max-h-96" />
                     </div>
                 </div>
             </div>

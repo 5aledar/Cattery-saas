@@ -27,7 +27,7 @@ export const Table = () => {
   }, [deleting])
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto mb-5">
       <table className="table">
         {/* head */}
         <thead>
@@ -77,7 +77,7 @@ export const Table = () => {
                 </button>
               </td>
               <td className="flex gap-2 ">
-                <Link to="/edit">
+                <Link to={`/edit/${catName}`}>
                   <button className="btn btn-outline btn-warning btn-s">
                     Edit <MdEdit />
                   </button>

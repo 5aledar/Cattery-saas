@@ -60,7 +60,6 @@ export function AddCat() {
         throw new Error("Failed to add new cat");
       }
 
-      const result = await response.json();
       alert("Cat added successfully");
 
       setCatData({

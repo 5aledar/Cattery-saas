@@ -22,7 +22,7 @@ export const EditCat = () => {
     const fetchCatData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:4000/cat/getCatByName/${catName}`
+         `http://localhost:4000/cat/getCatByName/${catName}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch cat data");
@@ -31,8 +31,8 @@ export const EditCat = () => {
         const data = await response.json();
         setCatData({
           catName: data.catName || "",
-          catWeight: data.catWeight || "",
-          catAge: data.catAge || "",
+          catWeight: data.catWeight ||  "",
+          catAge: data.catAge ||  "",
           file: null,
           filePreview: data.catImage || "", // Handle default value for filePreview
         });
@@ -72,17 +72,10 @@ export const EditCat = () => {
     setIsLoading(true);
     setMessage("");
 
-    const formData = new FormData();
-    formData.append("name", catData.name);
-    formData.append("weight", catData.weight);
-    formData.append("age", catData.age);
-    if (catData.file) {
-      formData.append("file", catData.file);
-    }
-      console.log("+++++",formData);
+  
     try {
       const response = await fetch(
-        `http://localhost:4000/cat/edit/${catName}`,
+       ` http://localhost:4000/cat/edit/${catName}`,
         {
           method: "POST",
           headers: {
@@ -91,8 +84,7 @@ export const EditCat = () => {
           body: JSON.stringify(catData),
         }
       );
-
-      if (!response.ok) {
+if (!response.ok) {
         throw new Error("Failed to update cat");
       }
       const data = await response.json()

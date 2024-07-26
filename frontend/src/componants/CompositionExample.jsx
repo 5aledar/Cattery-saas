@@ -35,14 +35,13 @@ function GaugePointer() {
   );
 }
 
-export default function CompositionExample({ val }) {
+export default function CompositionExample({ val, type }) {
   const value = val;
-  let arrawValue = 0
-  if(value > 100){
-    arrawValue = 100
-  }else{
-    arrawValue = value
-
+  let arrawValue = 0;
+  if (value > 100) {
+    arrawValue = 100;
+  } else {
+    arrawValue = value;
   }
   const color = value < 50 ? "red" : value < 75 ? "orange" : "green";
 
@@ -54,13 +53,13 @@ export default function CompositionExample({ val }) {
         startAngle={-110}
         endAngle={110}
         value={arrawValue}
-        >
+      >
         <GaugeReferenceArc />
         <GaugeValueArc />
         <GaugePointer />
       </GaugeContainer>
-        <h1 className="ml-24 font-bold text-3xl">{value}</h1>
-    </div >
+      <h1 className=" font-bold text-3xl">{type + " : " + value + " days"}</h1>
+    </div>
   );
 }
 

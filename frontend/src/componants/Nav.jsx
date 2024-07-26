@@ -116,8 +116,7 @@ export function Nav() {
           </div>
         </Toolbar>
       </AppBar>
-      {/* إضافة هذه الـ Box لضمان أن المحتوى لا يختفي خلف الـ AppBar */}
-      <Box sx={{ mt: 10 }} />
+      <Box sx={{ mt: 5 }} />
     </Box>
   );
 }

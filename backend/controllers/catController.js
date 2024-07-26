@@ -40,23 +40,50 @@ const addNewCat = async (req, res) => {
 
 const editCat = async (req, res) => {
   try {
-    const { catName } = req.params;
-    const { catname, catAge, catWeight, catImage } = req.body;
+    const { catname: originalCatName } = req.params;
+    const { catName, catAge, catWeight, catImage } = req.body;
+    console.log( catName, catAge, catWeight, catImage );
+    
+    console.log("Received data:", req.body);
+
+    // Check for missing data
+    if (!catName || !catAge || !catWeight) {
+      return res.status(400).json("data is missing");
+    }
 
     if (!catname || !catAge || !catWeight || !catImage)
       return res.json("data is missing");
 
-    const cat = await Cat.findOne({ catName: catName });
-    if (!cat) {
+    // Find the existing cat by the original name
+    const existingCat = await Cat.findOne({ catName: originalCatName });
+    if (!existingCat) {
       return res.status(404).json("cat not found");
     }
 
-    cat.catName = catname;
-    cat.catAge = catAge;
-    cat.catWeight = catWeight;
-    cat.catImage = catImage;
+    // Handle image upload if a new image is provided
+    let updatedCatImage = existingCat.catImage; // Keep the existing image if not updated
+    if (catImage) {
+      const result = await cloudinary.uploader.upload(catImage);
+      updatedCatImage = result.secure_url;
+    }
 
-    await cat.save();
+    // Update the cat's information
+    const updatedCat = await Cat.findOneAndUpdate(
+      { catName: originalCatName },
+      {
+        catName, // Update name if changed
+        catAge,
+        catWeight,
+        catImage: updatedCatImage,
+      },
+      { new: true } // Return the updated document
+    );
+
+    if (!updatedCat) {
+      return res.status(404).json("failed to update cat");
+    }
+
+    console.log("Cat updated:", updatedCat);
     res.status(200).json("cat updated successfully");
   } catch (error) {
     console.error(error);
@@ -78,7 +105,7 @@ const deleteCat = async (req, res) => {
     const { catName } = req.params;
 
     if (!catName) {
-      return res.json("catId is missing");
+      return res.json("catName is missing");
     }
     const cat = await Cat.findOne({ catName: catName });
     if (!cat) {
@@ -97,8 +124,9 @@ const deleteCat = async (req, res) => {
 };
 
 const getCatByName = async (req, res) => {
-  const { catName } = await req.params;
-  const cat = await Cat.findOne({ catName: catName });
+  const { catname } = await req.params;
+  const cat = await Cat.findOne({ catName: catname });
+  // console.log(cat,"========");
   if (!cat) {
     return res.status(404).json("cat nout found");
   }

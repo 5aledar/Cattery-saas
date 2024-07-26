@@ -16,6 +16,7 @@ function App() {
       <Route path='/ResourceCalculator' element={<ResourceCalculator></ResourceCalculator>}></Route>
       <Route path='/editSupplies' element={<EditSupply></EditSupply>}></Route>
     </Routes>
+    
     </>
   );
 }

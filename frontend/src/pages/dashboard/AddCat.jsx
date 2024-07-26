@@ -4,7 +4,6 @@ import { FcCalendar } from "react-icons/fc";
 import { IoSend } from "react-icons/io5";
 import { BiArrowBack } from "react-icons/bi";
 import { Link } from "react-router-dom";
-
 export function AddCat() {
   const [catData, setCatData] = useState({
     catName: "",
@@ -32,6 +31,17 @@ export function AddCat() {
       }));
     }
   };
+  const handleImgChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImg(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,7 +54,8 @@ export function AddCat() {
         },
         body: JSON.stringify(catData),
       });
-
+      const data = await response.json()
+      console.log(data);
       if (!response.ok) {
         throw new Error("Failed to add new cat");
       }

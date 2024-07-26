@@ -75,4 +75,9 @@ const getSupplyDate = async (req, res) => {
     res.status(200).json(days)
 }
 
-module.exports = { getSupplyDate }
+const getSupplies = async (req, res) => {
+    const supplies =await Supply.find()
+    res.json(supplies[0])
+}
+
+module.exports = { getSupplyDate, getSupplies }

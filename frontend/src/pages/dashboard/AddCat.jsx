@@ -54,6 +54,7 @@ export function AddCat() {
         },
         body: JSON.stringify(catData),
       });
+      // console.log(catData);
       const data = await response.json()
       console.log(data);
       if (!response.ok) {
@@ -71,7 +72,6 @@ export function AddCat() {
       console.log(result);
     } catch (error) {
       console.error("Error adding new cat:", error);
-      alert("An error occurred while adding the cat");
     }
   };
 

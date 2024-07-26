@@ -1,38 +1,49 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MdEdit } from "react-icons/md";
 
 export const Table = () => {
-  const data = [
-    {
-      id: 1,
-      name: "Whiskers",
-      age: 2,
-      weight: "4.5 kg",
-      image: "https://placekitten.com/200/200", // Example image URL
-    },
-    {
-      id: 2,
-      name: "Fluffy",
-      age: 3,
-      weight: "5 kg",
-      image: "https://placekitten.com/200/201", // Example image URL
-    },
-    {
-      id: 3,
-      name: "Mittens",
-      age: 1,
-      weight: "3.8 kg",
-      image: "https://placekitten.com/200/202", // Example image URL
-    },
-    {
-      id: 4,
-      name: "Snowball",
-      age: 4,
-      weight: "6 kg",
-      image: "https://placekitten.com/200/203", // Example image URL
-    },
-  ];
+  const [data, setData] = useState([])
+  const getCatData = async () => {
+    const res = await fetch('http://localhost:4000/cat/getAllCats')
+    const cats = await res.json()
+     setData(cats)
+  }
+
+
+  useEffect(() => {
+    getCatData()
+  }, [])
+  // const data = [
+  //   {
+  //     id: 1,
+  //     name: "Whiskers",
+  //     age: 2,
+  //     weight: "4.5 kg",
+  //     image: "https://placekitten.com/200/200", // Example image URL
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Fluffy",
+  //     age: 3,
+  //     weight: "5 kg",
+  //     image: "https://placekitten.com/200/201", // Example image URL
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Mittens",
+  //     age: 1,
+  //     weight: "3.8 kg",
+  //     image: "https://placekitten.com/200/202", // Example image URL
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Snowball",
+  //     age: 4,
+  //     weight: "6 kg",
+  //     image: "https://placekitten.com/200/203", // Example image URL
+  //   },
+  // ];
   return (
     <div className="overflow-x-auto mb-5">
       <table className="table">
@@ -51,16 +62,16 @@ export const Table = () => {
         <tbody>
           {/* rows */}
           {data.map((row) => (
-            <tr className="text-center" key={row.id}>
+            <tr className="text-center" key={row._id}>
               <th></th>
-              <td className="font-bold">{row.name}</td>
-              <td>{row.age} years</td>
-              <td>{row.weight}</td>
+              <td className="font-bold">{row.catName}</td>
+              <td>{row.catAge} years</td>
+              <td>{row.catWeight}</td>
               <td>
                 <div className="flex justify-center">
                   <img
-                    src={row.image}
-                    alt={`Image of ${row.name}`}
+                    src={row.catImage}
+                    alt={`Image of ${row.catName}`}
                     className="h-12 w-12 object-cover rounded-full"
                   />
                 </div>

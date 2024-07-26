@@ -8,12 +8,12 @@ export const ResourceCalculator = () => {
   return (
     <>
       <Nav></Nav>
-      <div className=" m-auto h-full mt-10 w-full flex  gap-4 justify-around">
+      <div className=" m-auto h-full mt-10  flex  gap-4 justify-around">
         <Sypplies></Sypplies>
         <Vaccinations></Vaccinations>
         {/* <Chars></Chars> */}
       </div>
-      <CompositionExample></CompositionExample>
+      <div className="w-full flex justify-cente" ><CompositionExample ></CompositionExample></div>
     </>
   );
 };

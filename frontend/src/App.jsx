@@ -1,4 +1,3 @@
-// import Button from '@mui/material/Button';
 import {  Route, Routes } from "react-router-dom";
 import {Home} from './pages/Home'
 import {Dashboard} from './pages/dashboard/Dashboard'
@@ -14,7 +13,6 @@ function App() {
       <Route path='/add' element={<AddCat></AddCat>}></Route>
       <Route path='/edit' element={<EditCat></EditCat>}></Route>
       <Route path='/ResourceCalculator' element={<ResourceCalculator></ResourceCalculator>}></Route>
-
     </Routes>
     </>
   );

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Nav } from '../componants/Nav'
+import {Fotter} from '../componants/Fotter'
 // import { CatAnimation } from './CatAnimation'
 export const Home = () => {
   return (
@@ -7,6 +8,7 @@ export const Home = () => {
     <Nav></Nav>
     <div>Home</div>
     {/* <CatAnimation></CatAnimation> */}
+    <Fotter></Fotter>
     </>
   )
 }

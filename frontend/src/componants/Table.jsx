@@ -34,7 +34,7 @@ export const Table = () => {
     },
   ];
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto mb-5">
       <table className="table">
         {/* head */}
         <thead>

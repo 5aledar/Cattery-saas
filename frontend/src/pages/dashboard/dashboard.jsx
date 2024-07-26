@@ -7,6 +7,7 @@ export const Dashboard = () => {
     <>
       <Nav></Nav>
       <Table></Table>
+      {/* <Fotter></Fotter> */}
     </>
   );
 };

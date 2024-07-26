@@ -39,7 +39,7 @@ export const Litters = () => {
                     Sypplies!
                     <div className="badge badge-secondary">For your cats</div>
                 </h2>
-                <p>litter boxes: {boxesDate} days<br/>litter: {litterDate} days<br/>wipes: {wipesDate} days</p>
+                <p>litter boxes: {boxesDate} days ,litter: {litterDate} days ,wipes: {wipesDate} days</p>
                 <div className="card-actions justify-end">
                     <div className="badge badge-outline">+{litterBoxes} box</div>
                     <div className="badge badge-outline">+{litter} kg</div>

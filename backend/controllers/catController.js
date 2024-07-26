@@ -51,6 +51,9 @@ const editCat = async (req, res) => {
       return res.status(400).json("data is missing");
     }
 
+    if ( !catName || !catAge || !catWeight || !catImage)
+      return res.json("data is missing");
+
     // Find the existing cat by the original name
     const existingCat = await Cat.findOne({ catName: originalCatName });
     if (!existingCat) {

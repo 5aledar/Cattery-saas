@@ -12,7 +12,7 @@ export const Vaccinations = () => {
     const res = await fetch('http://localhost:4000/consumption/getSupplyDate')
     const dates =await res.json()
     setVaccinDate(dates.vaccinations)
-    console.log(dates);
+    
 }
   useEffect(() => {
     getVaccinations()

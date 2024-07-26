@@ -51,6 +51,15 @@ const editCat = async (req, res) => {
     }
 };
 
+const getAllCats = async (req, res) => {
+    try {
+        const cats = await Cat.find()
+        res.status(200).json(cats)
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
 const deleteCat = async (req, res) => {
     try {
         const { catId } = req.params;
@@ -75,23 +84,7 @@ const deleteCat = async (req, res) => {
 };
 
 
-const getDailyConsumption = async (req, res) => {
-    const cats = await Cat.find()
-    let rate = 0
-    for (let i = 0; i < cats.length; i++) {
 
-        if (cats[i].catAge < 1) {
-            rate += 0.05
-        } else if (cats[i].catAge > 1 && cats[i].catAge < 7) {
-
-            rate += 0.12
-        } else if (cats[i].catAge > 8) {
-            rate += 0.09
-        }
-        console.log(rate);
-    }
-    res.json({ dailyConsumption: rate })
-}
 const addCatSupplies = async (req, res) => {
     try {
 
@@ -108,4 +101,4 @@ const addCatSupplies = async (req, res) => {
     }
 }
 
-module.exports = { addNewCat, editCat, deleteCat, getDailyConsumption, addCatSupplies }
+module.exports = { addNewCat, editCat, deleteCat, addCatSupplies, getAllCats }

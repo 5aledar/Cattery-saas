@@ -75,16 +75,16 @@ const getAllCats = async (req, res) => {
 
 const deleteCat = async (req, res) => {
   try {
-    const { catId } = req.params;
+    const { catName } = req.params;
 
-    if (!catId) {
+    if (!catName) {
       return res.json("catId is missing");
     }
-    const cat = await Cat.findById({ _id: catId });
+    const cat = await Cat.findOne({ catName: catName });
     if (!cat) {
       return res.status(404).json("couldnt finnd cat");
     }
-    const result = await Cat.deleteOne({ _id: catId });
+    const result = await Cat.deleteOne({ catName: catName });
     if (result.deletedCount === 0) {
       return res.status(404).json("cat not found");
     }

@@ -1,8 +1,12 @@
 import React from 'react';
 import img1 from '../assets/cats.jpg';
 import { motion } from 'framer-motion';
+import { Nav } from '../componants/Nav';
+import {Fotter} from '../componants/Fotter'
 export const Home = () => {
   return (
+    <>
+    <Nav></Nav>
     <section
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -61,5 +65,7 @@ export const Home = () => {
         ></div>
       </div>
     </section>
+    <Fotter></Fotter>
+    </>
   );
 };

@@ -43,7 +43,7 @@ const editCat = async (req, res) => {
     const { catId } = req.params;
     const { catName, catAge, catWeight, catImage } = req.body;
 
-    if (!catId || !catName || !catAge || !catWeight || !catImage)
+    if ( !catName || !catAge || !catWeight || !catImage)
       return res.json("data is missing");
 
     const cat = await Cat.findById(catId);

@@ -79,6 +79,27 @@ const getSupplies = async (req, res) => {
     const supplies = await Supply.findOne().limit(1)
     res.json(supplies)
 }
+const updateSupllies = async (req, res) => {
+    const { food, vaccinations, litter_boxes, litter, cat_wipes } = req.body
+    const filter = {};
+
+    const updateResult = await Supply.updateOne(filter, {
+        $set: {
+            food: food,
+            medicine: { vaccinations: vaccinations },
+            litter_and_hygiene: {
+                litter_boxes: litter_boxes,
+                litter: litter,
+                cat_wipes: cat_wipes
+            }
+        }
 
 
-module.exports = { getSupplyDate, getSupplies }
+    });
+    console.log(updateResult);
+    res.json(updateResult)
+}
+
+
+
+module.exports = { getSupplyDate, getSupplies, updateSupllies }

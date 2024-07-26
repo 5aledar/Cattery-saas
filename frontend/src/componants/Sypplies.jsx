@@ -33,12 +33,12 @@ export const Sypplies = () => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">
-          Supplies!
+          Food!
           <div className="badge badge-secondary bg-blue-600 border-blue-600 p-3">For your cats</div>
         </h2>
-        <p>Your food will be enough for one year</p>
+        <p>Your food will be enough for {foodDate} days</p>
         <div className="card-actions justify-end">
-          <motion.div className="badge badge-outline">+100 kg</motion.div>
+          <motion.div className="badge badge-outline">+{food} kg</motion.div>
          
         </div>
       </div>

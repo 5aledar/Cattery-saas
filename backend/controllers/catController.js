@@ -109,4 +109,4 @@ const addCatSupplies = async (req, res) => {
     }
 }
 
-module.exports = { addNewCat, editCat, deleteCat, addCatSupplies, getAllCats }
+module.exports = { addNewCat, editCat, deleteCat, addCatSupplies, getAllCats ,getCatByName}

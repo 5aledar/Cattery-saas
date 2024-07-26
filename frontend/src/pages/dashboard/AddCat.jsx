@@ -15,40 +15,50 @@ export function AddCat() {
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
-    setCatData((prevData) => ({
-      ...prevData,
-      [name]: type === "file" ? files[0] : value,
-    }));
+    if (type === "file") {
+      const file = files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setCatData((prevData) => ({
+          ...prevData,
+          [name]: reader.result,
+        }));
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setCatData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("catName", catData.catName);
-    formData.append("catAge", catData.catAge);
-    formData.append("catWeight", catData.catWeight);
-    if (catData.catImage) {
-      formData.append("catImage", catData.catImage);
-    }
-
     try {
       const response = await fetch("http://localhost:4000/cat/addNewCat", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(catData),
       });
 
       if (!response.ok) {
         throw new Error("Failed to add new cat");
       }
 
+      const result = await response.json();
       alert("Cat added successfully");
+
       setCatData({
         catName: "",
         catAge: 0,
         catWeight: 0,
         catImage: null,
       });
+      console.log(result);
     } catch (error) {
       console.error("Error adding new cat:", error);
       alert("An error occurred while adding the cat");

@@ -3,17 +3,16 @@ import { Link } from "react-router-dom";
 import { MdEdit } from "react-icons/md";
 
 export const Table = () => {
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
   const getCatData = async () => {
-    const res = await fetch('http://localhost:4000/cat/getAllCats')
-    const cats = await res.json()
-     setData(cats)
-  }
-
+    const res = await fetch("http://localhost:4000/cat/getAllCats");
+    const cats = await res.json();
+    setData(cats);
+  };
 
   useEffect(() => {
-    getCatData()
-  }, [])
+    getCatData();
+  }, []);
   // const data = [
   //   {
   //     id: 1,
@@ -95,7 +94,7 @@ export const Table = () => {
                 </button>
               </td>
               <td className="flex gap-2 ">
-                <Link to="/edit">
+                <Link to={`/edit/${catName}`}>
                   <button className="btn btn-outline btn-warning btn-s">
                     Edit <MdEdit />
                   </button>

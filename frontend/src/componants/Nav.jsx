@@ -28,10 +28,10 @@ export function Nav() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed">
+      <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-             <div className="text-3xl">Admin</div>
+            <div className="text-3xl">Admin</div>
           </Typography>
           <div className="hidden sm:flex w-1/3 gap-4 items-center">
             <Link to="/">
@@ -98,25 +98,33 @@ export function Nav() {
               onClose={handleMenuClose}
             >
               <MenuItem onClick={handleMenuClose}>
-                <Link to="/" className="w-full text-left">Home</Link>
+                <Link to="/" className="w-full text-left">
+                  Home
+                </Link>
               </MenuItem>
               <MenuItem onClick={handleMenuClose}>
-                <Link to="/ResourceCalculator" className="w-full text-left">Warehouse</Link>
+                <Link to="/ResourceCalculator" className="w-full text-left">
+                  Warehouse
+                </Link>
               </MenuItem>
               {currentPath === "/dashboard" ? (
                 <MenuItem onClick={handleMenuClose}>
-                  <Link to="/add" className="w-full text-left">Add</Link>
+                  <Link to="/add" className="w-full text-left">
+                    Add
+                  </Link>
                 </MenuItem>
               ) : (
                 <MenuItem onClick={handleMenuClose}>
-                  <Link to="/dashboard" className="w-full text-left">Dashboard</Link>
+                  <Link to="/dashboard" className="w-full text-left">
+                    Dashboard
+                  </Link>
                 </MenuItem>
               )}
             </Menu>
           </div>
         </Toolbar>
       </AppBar>
-      <Box sx={{ mt: 5 }} />
+      <Box sx={{ mt: 0 }} />
     </Box>
   );
 }

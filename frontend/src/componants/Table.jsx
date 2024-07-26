@@ -25,7 +25,7 @@ export const Table = () => {
   }, [deleting]);
 
   return (
-    <div className="overflow-x-auto mb-5">
+    <div className="overflow-x-auto mt-5">
       <table className="table">
         {/* head */}
         <thead>

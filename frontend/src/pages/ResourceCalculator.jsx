@@ -15,7 +15,7 @@ export const ResourceCalculator = () => {
         <Litters></Litters>
         {/* <Chars></Chars> */}
       </div>
-      <div className="w-full flex justify-cente" ><CompositionExample ></CompositionExample></div>
+      <div className="w-full flex justify-cente" ><CompositionExample ></CompositionExample><CompositionExample ></CompositionExample><CompositionExample ></CompositionExample></div>
     </>
   );
 };

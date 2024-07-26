@@ -84,7 +84,14 @@ const deleteCat = async (req, res) => {
 };
 
 
-
+const getCatByName = async (req, res) => {
+    const {catName} = await req.params
+    const cat =await Cat.findOne({ catName: catName })
+    if(!cat){
+        return res.status(404).json("cat nout found")
+    }
+    res.status(200).json(cat)
+}
 
 const addCatSupplies = async (req, res) => {
     try {

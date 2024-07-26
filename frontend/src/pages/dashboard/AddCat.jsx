@@ -3,6 +3,7 @@ import { FcCalendar } from "react-icons/fc";
 import { IoSend } from "react-icons/io5";
 import { BiArrowBack } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 export function AddCat() {
   const [catData, setCatData] = useState({
     catName: "",

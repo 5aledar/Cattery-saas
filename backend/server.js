@@ -4,6 +4,12 @@ const dotenv = require('dotenv')
 const catRoutes = require('./routes/cat.routes')
 const connectToMongoDB = require('./db/connectToMongoDB');
 const consumptionRoutes = require('./routes/consumption.routes')
+const cloudinary  = require('cloudinary')
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+  });
 dotenv.config();
 const app = express()
 app.use(cors())

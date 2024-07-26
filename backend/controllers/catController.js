@@ -1,11 +1,17 @@
 const Cat = require('../models/catModel')
 const Supply = require('../models/supplyModel')
+const cloudinary  = require('cloudinary')
 const addNewCat = async (req, res) => {
     try {
         const { catName, catAge, catWeight, catImage } = req.body
         if (!catName || !catAge || !catWeight || !catImage)
             return res.json("data is missing")
         const existedCat = await Cat.findOne({ catName: catName })
+        if (catImage) {
+            const result = await cloudinary.uploader.upload(catImage);
+            catImage = result.secure_url;
+            console.log(catImage);
+        }
         if (!existedCat) {
 
             const newCat = new Cat({
@@ -62,16 +68,16 @@ const getAllCats = async (req, res) => {
 
 const deleteCat = async (req, res) => {
     try {
-        const { catId } = req.params;
+        const { catName } = req.params;
 
-        if (!catId) {
-            return res.json("catId is missing");
+        if (!catName) {
+            return res.json("catName is missing");
         }
-        const cat = await Cat.findById({ _id: catId })
+        const cat = await Cat.findOne({ catName: catName })
         if (!cat) {
             return res.status(404).json("couldnt finnd cat")
         }
-        const result = await Cat.deleteOne({ _id: catId });
+        const result = await Cat.deleteOne({ catName: catName });
         if (result.deletedCount === 0) {
             return res.status(404).json("cat not found");
         }
@@ -85,9 +91,9 @@ const deleteCat = async (req, res) => {
 
 
 const getCatByName = async (req, res) => {
-    const {catName} = await req.params
-    const cat =await Cat.findOne({ catName: catName })
-    if(!cat){
+    const { catName } = await req.params
+    const cat = await Cat.findOne({ catName: catName })
+    if (!cat) {
         return res.status(404).json("cat nout found")
     }
     res.status(200).json(cat)
@@ -109,4 +115,4 @@ const addCatSupplies = async (req, res) => {
     }
 }
 
-module.exports = { addNewCat, editCat, deleteCat, addCatSupplies, getAllCats ,getCatByName}
+module.exports = { addNewCat, editCat, deleteCat, addCatSupplies, getAllCats, getCatByName }

@@ -1,49 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useCallback  } from "react";
 import { Link } from "react-router-dom";
 import { MdEdit } from "react-icons/md";
 
 export const Table = () => {
   const [data, setData] = useState([])
+  // const [catName, setCatName] = useState(null)
+  const [deleting , setDeleting] = useState(false)
   const getCatData = async () => {
     const res = await fetch('http://localhost:4000/cat/getAllCats')
     const cats = await res.json()
-     setData(cats)
+    setData(cats)
   }
 
 
+  const handleClick = async (row) => {
+    
+    const res = await fetch(`http://localhost:4000/cat/delete/${row.catName}`, {
+      method: 'DELETE'
+    })
+    const data = await res.json()
+    console.log(data);
+    setDeleting(!deleting)
+  }
   useEffect(() => {
     getCatData()
-  }, [])
-  // const data = [
-  //   {
-  //     id: 1,
-  //     name: "Whiskers",
-  //     age: 2,
-  //     weight: "4.5 kg",
-  //     image: "https://placekitten.com/200/200", // Example image URL
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Fluffy",
-  //     age: 3,
-  //     weight: "5 kg",
-  //     image: "https://placekitten.com/200/201", // Example image URL
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Mittens",
-  //     age: 1,
-  //     weight: "3.8 kg",
-  //     image: "https://placekitten.com/200/202", // Example image URL
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Snowball",
-  //     age: 4,
-  //     weight: "6 kg",
-  //     image: "https://placekitten.com/200/203", // Example image URL
-  //   },
-  // ];
+  }, [deleting])
+
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -64,7 +46,7 @@ export const Table = () => {
           {data.map((row) => (
             <tr className="text-center" key={row._id}>
               <th></th>
-              <td className="font-bold">{row.catName}</td>
+              <td className="font-bold" value={catName}>{row.catName}</td>
               <td>{row.catAge} years</td>
               <td>{row.catWeight}</td>
               <td>
@@ -77,7 +59,7 @@ export const Table = () => {
                 </div>
               </td>
               <td>
-                <button className="btn btn-circle btn-outline btn-sm hover:text-red-600">
+                <button className="btn btn-circle btn-outline btn-sm hover:text-red-600" onClick={() => handleClick(row)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"

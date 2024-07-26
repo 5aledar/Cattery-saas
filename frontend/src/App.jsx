@@ -1,6 +1,6 @@
 import {  Route, Routes } from "react-router-dom";
 import {Home} from './pages/Home'
-import {Dashboard} from './pages/dashboard/dashboard'
+import {Dashboard} from './pages/dashboard/Dashboard'
 import { AddCat } from "./pages/dashboard/AddCat";
 import {EditCat} from './pages/dashboard/EditCat';
 import {ResourceCalculator} from './pages/ResourceCalculator'

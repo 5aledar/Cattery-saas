@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React  , {useState} from "react";
-=======
 import React , {useState ,useEffect} from "react";
->>>>>>> f09f25ef60f9fea2c56d343454e285e12a81f342
 import { Nav } from "../componants/Nav";
 import { Sypplies } from "../componants/Sypplies";
 import { Vaccinations } from "../componants/Vaccinations";

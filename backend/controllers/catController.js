@@ -1,5 +1,5 @@
 const Cat = require('../models/catModel')
-
+const Supply = require('../models/supplyModel')
 const addNewCat = async (req, res) => {
     try {
         const { catName, catAge, catWeight, catImage } = req.body
@@ -51,6 +51,15 @@ const editCat = async (req, res) => {
     }
 };
 
+const getAllCats = async (req, res) => {
+    try {
+        const cats = await Cat.find()
+        res.status(200).json(cats)
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
 const deleteCat = async (req, res) => {
     try {
         const { catId } = req.params;
@@ -59,7 +68,7 @@ const deleteCat = async (req, res) => {
             return res.json("catId is missing");
         }
         const cat = await Cat.findById({ _id: catId })
-        if(!cat){
+        if (!cat) {
             return res.status(404).json("couldnt finnd cat")
         }
         const result = await Cat.deleteOne({ _id: catId });
@@ -75,4 +84,29 @@ const deleteCat = async (req, res) => {
 };
 
 
-module.exports = { addNewCat, editCat, deleteCat }
+const getCatByName = async (req, res) => {
+    const {catName} = await req.params
+    const cat =await Cat.findOne({ catName: catName })
+    if(!cat){
+        return res.status(404).json("cat nout found")
+    }
+    res.status(200).json(cat)
+}
+
+const addCatSupplies = async (req, res) => {
+    try {
+
+        const { food, medicine, litter_and_hygiene } = req.body
+        const newSupply = new Supply({
+            food: food,
+            medicine: medicine,
+            litter_and_hygiene: litter_and_hygiene
+        })
+        await newSupply.save()
+        res.status(201).json("supplies added")
+    } catch (err) {
+        res.status(500).json(err)
+    }
+}
+
+module.exports = { addNewCat, editCat, deleteCat, addCatSupplies, getAllCats ,getCatByName}

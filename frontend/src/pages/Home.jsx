@@ -1,10 +1,8 @@
 import React from 'react';
 import img1 from '../assets/cats.jpg';
 import { motion } from 'framer-motion';
-import { FaCat } from "react-icons/fa6";
-
 export const Home = () => {
-  return (      
+  return (
     <section
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -14,15 +12,14 @@ export const Home = () => {
       <div className="absolute inset-0 bg-white/75 sm:bg-transparent sm:from-white/95 sm:to-white/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"></div>
 
       <div className="w-full bg-white flex flex-row">
-        <div className="w-1/2 flex items-center justify-center">
-          <motion.div
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1.5, delay: 0.5, ease: 'easeInOut' }}
-            className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:px-8"
-          >
+        <motion.div
+          initial={{ x: -20, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.5, ease: 'easeInOut' }}
+          className="w-1/2 flex items-center justify-center"
+        >
+          <div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:px-8">
             <div className="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
-              < motion.div className='flex justify-center items-center w-[100%] mb-8 text-5xl'><FaCat /></motion.div>
               <motion.h1
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -51,8 +48,8 @@ export const Home = () => {
                 </motion.a>
               </div>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
         <div
           className="w-1/2 h-screen flex items-center justify-center"
           style={{

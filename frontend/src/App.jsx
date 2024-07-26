@@ -4,6 +4,7 @@ import {Dashboard} from './pages/dashboard/Dashboard'
 import { AddCat } from "./pages/dashboard/AddCat";
 import {EditCat} from './pages/dashboard/EditCat';
 import {ResourceCalculator} from './pages/ResourceCalculator'
+import {EditSupply} from './pages/dashboard/EditSupply'
 function App() {
   return (
     <>
@@ -13,6 +14,7 @@ function App() {
       <Route path='/add' element={<AddCat></AddCat>}></Route>
       <Route path='/edit/:catName' element={<EditCat></EditCat>}></Route>
       <Route path='/ResourceCalculator' element={<ResourceCalculator></ResourceCalculator>}></Route>
+      <Route path='/editSupplies' element={<EditSupply></EditSupply>}></Route>
     </Routes>
     </>
   );

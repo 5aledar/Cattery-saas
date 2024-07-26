@@ -76,8 +76,9 @@ const getSupplyDate = async (req, res) => {
 }
 
 const getSupplies = async (req, res) => {
-    const supplies =await Supply.find()
-    res.json(supplies[0])
+    const supplies = await Supply.findOne().limit(1)
+    res.json(supplies)
 }
+
 
 module.exports = { getSupplyDate, getSupplies }

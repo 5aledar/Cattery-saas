@@ -1,4 +1,4 @@
-import React , {useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Nav } from "../componants/Nav";
 import { Sypplies } from "../componants/Sypplies";
 import { Vaccinations } from "../componants/Vaccinations";
@@ -9,17 +9,17 @@ export const ResourceCalculator = () => {
   const [foodDays, setFoodDays] = useState(0)
   const [vaccinDays, setVaccinDays] = useState(0)
   const [litterDays, setlitterDays] = useState(0)
-  const getDates = async () =>{
+  const getDates = async () => {
     const res = await fetch('http://localhost:4000/consumption/getSupplyDate')
-    const dates =await res.json()
+    const dates = await res.json()
     console.log(dates);
     setFoodDays(dates.food)
     setVaccinDays(dates.vaccinations)
     setlitterDays(dates.litter)
-}
-useEffect(()=>{
-  getDates()
-},[])
+  }
+  useEffect(() => {
+    getDates()
+  }, [])
   return (
     <>
       <Nav></Nav>

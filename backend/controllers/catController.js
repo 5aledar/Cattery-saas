@@ -40,18 +40,18 @@ const addNewCat = async (req, res) => {
 
 const editCat = async (req, res) => {
   try {
-    const { catId } = req.params;
-    const { catName, catAge, catWeight, catImage } = req.body;
+    const { catName } = req.params;
+    const { catname, catAge, catWeight, catImage } = req.body;
 
-    if ( !catName || !catAge || !catWeight || !catImage)
+    if (!catname || !catAge || !catWeight || !catImage)
       return res.json("data is missing");
 
-    const cat = await Cat.findById(catId);
+    const cat = await Cat.findOne({ catName: catName });
     if (!cat) {
       return res.status(404).json("cat not found");
     }
 
-    cat.catName = catName;
+    cat.catName = catname;
     cat.catAge = catAge;
     cat.catWeight = catWeight;
     cat.catImage = catImage;

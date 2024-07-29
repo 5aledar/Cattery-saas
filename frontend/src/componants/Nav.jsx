@@ -31,7 +31,7 @@ export function Nav() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <div className="text-3xl">Admin</div>
+            <div className="text-3xl">Cattery MG</div>
           </Typography>
           <div className="hidden sm:flex w-1/3 gap-4 items-center">
             <Link to="/">

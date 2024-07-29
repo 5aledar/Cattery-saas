@@ -30,7 +30,7 @@ const getSupplyDate = async (req, res) => {
     for (let k = 0; k < cats.length; k++) {
         if (cats[k].catAge > 1) {
             litRate += 0.4
-        } else if (cats[k].catAge >= 1 && ctas[k].catAge < 3) {
+        } else if (cats[k].catAge >= 1 && cats[k].catAge < 3) {
             litRate += 3
         } else if (cats[k].catAge >= 3) {
             litRate += 5

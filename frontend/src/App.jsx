@@ -14,7 +14,7 @@ function App() {
       <Route path='/add' element={<AddCat></AddCat>}></Route>
       <Route path='/edit/:catName' element={<EditCat></EditCat>}></Route>
       <Route path='/ResourceCalculator' element={<ResourceCalculator></ResourceCalculator>}></Route>
-      <Route path='/editSupplies' element={<EditSupply></EditSupply>}></Route>
+      {/* <Route path='/editSupplies' element={<EditSupply></EditSupply>}></Route> */}
     </Routes>
     
     </>
